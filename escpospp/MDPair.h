@@ -1,3 +1,4 @@
+#pragma once
 #ifndef INCLUDE_MDPAIR_H
 #define INCLUDE_MDPAIR_H
 
@@ -12,12 +13,12 @@ Author: Carlos Malanche, October 2018.
 */
 class MDPair: public std::pair<std::string, std::string>{
 public:
-    static MDPair getMatching(std::string toMatch);
+    static MDPair getMatching(const std::string &toMatch);
 private:
-    MDPair(std::string id);
+    explicit MDPair(std::string id);
     static void initializeMap();
     static std::map<std::string, MDPair *> mdPairMap;
-    std::string id;
+    std::string id_;
 };
 
-#endif //INCLUDE_MDPAIR_H
+#endif // INCLUDE_MDPAIR_H

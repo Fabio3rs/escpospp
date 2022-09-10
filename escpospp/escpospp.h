@@ -1,9 +1,10 @@
+#pragma once
 #ifndef INCLUDE_ESCPOSPP_H
 #define INCLUDE_ESCPOSPP_H
 
-#include "escpospp/Printer.h"
-#include "escpospp/FontParams.h"
-#include "escpospp/EscPosCommands.h"
-#include "escpospp/helpers.h"
+#include "EscPosCommands.h"
+#include "FontParams.h"
+#include "Printer.h"
+#include "helpers.h"
 
-#endif //INCLUDE_ESCPOSPP_H
+#endif // INCLUDE_ESCPOSPP_H

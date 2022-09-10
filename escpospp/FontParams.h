@@ -1,3 +1,4 @@
+#pragma once
 #ifndef INCLUDE_FONT_PARAMS_H
 #define INCLUDE_FONT_PARAMS_H
 

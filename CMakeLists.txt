@@ -19,5 +19,9 @@ if(testing_mode STREQUAL "true")
 else()
     add_library(EscPospp ${SOURCES})
 endif()
+target_compile_options(EscPospp PUBLIC -Weverything -Wpedantic -Wno-unused-member-function -std=c++17 -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-exit-time-destructors -Wno-global-constructors -Wno-constant-conversion)
 
 target_link_libraries(EscPospp usb-1.0)
+
+add_executable(main tests/main.cpp)
+target_link_libraries(main EscPospp)

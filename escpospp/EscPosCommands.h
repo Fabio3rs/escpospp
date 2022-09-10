@@ -1,20 +1,21 @@
+#pragma once
 #ifndef INCLUDE_ESCPOS_COMMANDS_H
 #define INCLUDE_ESCPOS_COMMANDS_H
 #include <string>
 
-namespace EscPos{
+namespace EscPos {
 
-//Cuts the paper after \x96 vertical spaces
+// Cuts the paper after \x96 vertical spaces
 extern std::string CUT;
-//Equivalent to ESC @
+// Equivalent to ESC @
 extern std::string RESET;
-//Equivalent to ESC M n for font type A
+// Equivalent to ESC M n for font type A
 extern std::string FONT_A;
-//Equivalent to ESC M n for font type B
+// Equivalent to ESC M n for font type B
 extern std::string FONT_B;
 // Equivalent to ESC - n for underline text
 extern std::string UNDERLINE_OFF;
-extern std::string UNDERLINE_1_DOT; 
+extern std::string UNDERLINE_1_DOT;
 extern std::string UNDERLINE_2_DOT;
 // Equivalent to ESC
 extern std::string BOLD_ON;
@@ -25,6 +26,8 @@ extern std::string BITMAP;
 extern std::string NO_LINE;
 // Reset line Size
 extern std::string RESET_LINE;
-}
+// ESC CMD
+extern std::string ESC;
+} // namespace EscPos
 
-#endif //INCLUDE_ESCPOS_COMMANDS_H
+#endif // INCLUDE_ESCPOS_COMMANDS_H
