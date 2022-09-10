@@ -10,16 +10,8 @@
 #include <stdexcept>
 #include <string>
 
-Printer *Printer::instance = nullptr;
-
 Printer::Printer(std::ostream &printerRawWriter)
     : ir(Printer::imageResolution::HIGH), printer(&printerRawWriter) {}
-
-Printer::~Printer() {
-    if (printer != nullptr) {
-        printer->flush();
-    }
-}
 
 bool Printer::textNoMarkdown(const std::string &text) {
     raw(text);
@@ -100,11 +92,17 @@ void Printer::changeToTPage(char pageNum) {
     raw(placeholder);
 }
 
-void Printer::raw(const std::string &text) { *printer << text; }
+void Printer::raw(const std::string &text) {
+    if (printer == nullptr) {
+        return;
+    }
+    
+    *printer << text;
+}
 
 void Printer::cut() { raw(EscPos::CUT); }
 
-void Printer::image(std::vector<std::vector<bool>> &bitmap) {
+void Printer::image(const std::vector<std::vector<bool>> &bitmap) {
     // Quickly check the integrity of the "bitmap"
     const size_t height = bitmap.size();
     const size_t width = bitmap[0].size();

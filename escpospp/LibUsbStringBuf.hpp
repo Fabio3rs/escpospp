@@ -1,4 +1,5 @@
 #pragma once
+#ifdef USE_LIBUSB
 
 #include <exception>
 #include <iostream>
@@ -62,7 +63,7 @@ class LibUsbStringBuf : public std::stringbuf {
             // printf("Vendor:Device = %04x:%04x\n", desc.idVendor,
             // desc.idProduct);
         }
-        libusb_free_device_list(list, count);
+        libusb_free_device_list(list, static_cast<int>(count));
 
         // A bit riskier method to open the device
         // printer = libusb_open_device_with_vid_pid(context, ids.first,
@@ -94,3 +95,4 @@ class LibUsbStringBuf : public std::stringbuf {
     libusb_context *context{};
     libusb_device_handle *printer{};
 };
+#endif

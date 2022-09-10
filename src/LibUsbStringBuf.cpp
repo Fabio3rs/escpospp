@@ -1,3 +1,4 @@
+#ifdef USE_LIBUSB
 #include <escpospp/LibUsbStringBuf.hpp>
 
 LibUsbStringBuf::~LibUsbStringBuf() {
@@ -12,3 +13,4 @@ LibUsbStringBuf::~LibUsbStringBuf() {
     libusb_close(printer); // close the device we opened
     libusb_exit(context);  // close the session
 }
+#endif

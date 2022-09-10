@@ -19,7 +19,8 @@ class Printer {
     enum imageResolution { HIGH, LOW };
 
     explicit Printer(std::ostream &printerRawWriter);
-    ~Printer();
+    Printer() = default;
+    ~Printer() = default;
 
     // Output functions
     bool textNoMarkdown(const std::string &text);
@@ -32,7 +33,7 @@ class Printer {
     //! Cuts the paper (by default, leaves some space)
     void cut();
     //! Prints an image, provided as a vector of rows of pixels.
-    void image(std::vector<std::vector<bool>> &bitmap);
+    void image(const std::vector<std::vector<bool>> &bitmap);
     //! Set Image resolution
     void setResolution(imageResolution ir);
     //! Underline text
@@ -48,10 +49,21 @@ class Printer {
     Printer(const Printer &) = default;
     Printer &operator=(const Printer &) = default;
 
-  private:
-    static Printer *instance;
-    imageResolution ir;
+    void release() { printer = nullptr; }
 
+    void flush() {
+        if (printer != nullptr) {
+            printer->flush();
+        }
+    }
+
+    void assign(std::ostream &writer) {
+        flush();
+        printer = &writer;
+    }
+
+  private:
+    imageResolution ir{imageResolution::HIGH};
     std::ostream *printer{};
 };
 

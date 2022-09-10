@@ -31,16 +31,12 @@ If you are using g++, then it is enough to type `make` to build the library.
 The use of this library is pretty straightforward, I tried to follow the notation of [python-escpos](https://github.com/python-escpos/python-escpos). An example code to print a text with a crippled version of markdown supported would be:
 
 ```cpp
-    #include <escpospp/LibUsbStringBuf.hpp>
-    #include <escpospp/escpospp.hpp>
+    #include <escpospp/UsbPrinter.hpp>
     #include <iostream>
 
     int main(){
         try{
-            LibUsbStringBuf buf{std::pair<int, int>(0x1753, 0x0b00)};
-            std::ostream stream(&buf);
-
-            Printer printer(stream);
+            EscPos::UsbPrinter printer(std::pair<int, int>(0x1753, 0x0b00));
             printer.text("This is a **sample** text!\n");
             printer.cut();
         } catch (int e){

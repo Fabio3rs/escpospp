@@ -1,14 +1,11 @@
-#include <escpospp/LibUsbStringBuf.hpp>
-#include <escpospp/escpospp.hpp>
+#include <escpospp/helpers.hpp>
+#include <escpospp/UsbPrinter.hpp>
 #include <iostream>
 #include <ostream>
 
 int main() {
     try {
-        LibUsbStringBuf buf{std::pair<int, int>(0x1753, 0x0b00)};
-        std::ostream stream(&buf);
-
-        Printer printer(stream);
+        EscPos::UsbPrinter printer(std::pair<int, int>(0x1753, 0x0b00));
         printer.text("This is a **sample** text!\n");
         printer.text("This is a **sample** text!\n");
         printer.text("This is a **sample** text!\n");
@@ -18,10 +15,7 @@ int main() {
         printer.text("This is a **sample** text!\n");
         printer.cut();
 
-        stream.flush();
-        stream.flush();
-        stream.flush();
-        stream.flush();
+        printer.flush();
     } catch (int e) {
         // There was an error
     }
