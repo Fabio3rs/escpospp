@@ -1,5 +1,5 @@
-#include "escpospp/LibUsbStringBuf.hpp"
-#include "escpospp/escpospp.h"
+#include <escpospp/LibUsbStringBuf.hpp>
+#include <escpospp/escpospp.hpp>
 #include <iostream>
 #include <ostream>
 

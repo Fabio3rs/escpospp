@@ -1,1 +1,1 @@
-#include <escpospp/FontParams.h>
+#include <escpospp/FontParams.hpp>

@@ -1,4 +1,4 @@
-#include <escpospp/EscPosCommands.h>
+#include <escpospp/EscPosCommands.hpp>
 
 namespace EscPos {
 // NOLINTNEXTLINE

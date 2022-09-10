@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <cstddef>
-#include <escpospp/EscPosCommands.h>
-#include <escpospp/MDPair.h>
-#include <escpospp/Printer.h>
+#include <escpospp/EscPosCommands.hpp>
+#include <escpospp/MDPair.hpp>
+#include <escpospp/Printer.hpp>
 #include <iostream>
 #include <iterator>
 #include <set>

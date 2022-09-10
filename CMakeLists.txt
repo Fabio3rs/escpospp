@@ -6,6 +6,7 @@ set(testing_mode "false")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 file(GLOB SOURCES
+    "escpospp/*.hpp"
     "escpospp/*.h"
     "src/*.cpp"
 )

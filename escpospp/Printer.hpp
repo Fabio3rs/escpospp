@@ -8,9 +8,11 @@
 #include <vector>
 
 /*
-Singleton printer object, functions are self explained
+Changed to use per instance, for example view README.md
 
 Author: Carlos Malanche, October 2018.
+
+This is a changed version
 */
 class Printer {
   public:

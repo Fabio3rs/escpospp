@@ -1,5 +1,15 @@
 # EscPospp: C++ library to control POS printers
 
+## This is a fork of the original repository
+
+- Separated USB from ESC Printer commands with ostream polymorphism
+- LibUSB integration moved to LibUsbStringBuf
+- Added change code page command
+- Added clang-format
+- Added clang-tidy checks
+
+## Original introduction
+
 It might be late, but I couldn't find an esc/pos utility to use with c++, so I coded a very minimalistic one.
 
 As a very, very important note, **this is a work in progress**.
@@ -16,17 +26,21 @@ You will need [libusb](http://libusb.info/), but that is the only dependency (at
 
 If you are using g++, then it is enough to type `make` to build the library.
 
-### Example usage
+### New example usage
 
 The use of this library is pretty straightforward, I tried to follow the notation of [python-escpos](https://github.com/python-escpos/python-escpos). An example code to print a text with a crippled version of markdown supported would be:
 
+```cpp
+    #include <escpospp/LibUsbStringBuf.hpp>
+    #include <escpospp/escpospp.hpp>
     #include <iostream>
-    #include "escpospp/escpospp.h"
 
     int main(){
         try{
-            Printer::initializePrinter(std::pair<int,int>(0x04b8, 0x0e15));
-            Printer &printer = Printer::getPrinter();
+            LibUsbStringBuf buf{std::pair<int, int>(0x1753, 0x0b00)};
+            std::ostream stream(&buf);
+
+            Printer printer(stream);
             printer.text("This is a **sample** text!\n");
             printer.cut();
         } catch (int e){
@@ -34,6 +48,7 @@ The use of this library is pretty straightforward, I tried to follow the notatio
         }
         return 0;
     }
+```
 
 Notice that the `Printer` class follows a kind of singleton pattern, so `initializePrinter` shall be called **only once**. Remember that you need to link to `libEscPospp.a` and `libusb-1.0.a`.
 

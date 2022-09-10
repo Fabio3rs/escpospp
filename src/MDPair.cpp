@@ -1,5 +1,5 @@
-#include <escpospp/EscPosCommands.h>
-#include <escpospp/MDPair.h>
+#include <escpospp/EscPosCommands.hpp>
+#include <escpospp/MDPair.hpp>
 #include <utility>
 
 std::map<std::string, MDPair *> MDPair::mdPairMap =

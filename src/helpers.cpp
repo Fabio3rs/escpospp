@@ -1,4 +1,4 @@
-#include <escpospp/helpers.h>
+#include <escpospp/helpers.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include <escpospp/stb_image.h>
 
