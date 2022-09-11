@@ -15,6 +15,14 @@ class UsbPrinter : public GenericPrinter {
         assign(stream);
     }
 
+    ~UsbPrinter() override;
+
+    UsbPrinter(UsbPrinter &&) = delete;
+    UsbPrinter &operator=(UsbPrinter &&) = delete;
+
+    UsbPrinter(const UsbPrinter &) = delete;
+    UsbPrinter &operator=(const UsbPrinter &) = delete;
+
   protected:
     LibUsbStringBuf buf;
     std::ostream stream;

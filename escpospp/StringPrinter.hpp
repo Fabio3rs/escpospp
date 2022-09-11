@@ -16,6 +16,14 @@ class StringPrinter : public GenericPrinter {
         assign(stream);
     }
 
+    ~StringPrinter() override;
+
+    StringPrinter(StringPrinter &&) = default;
+    StringPrinter &operator=(StringPrinter &&) = default;
+
+    StringPrinter(const StringPrinter &) = delete;
+    StringPrinter &operator=(const StringPrinter &) = delete;
+
     StringPrinter() { assign(stream); }
 
     explicit StringPrinter(std::stringstream &&fstr) : stream(std::move(fstr)) {

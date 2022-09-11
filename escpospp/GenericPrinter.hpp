@@ -13,10 +13,7 @@ class GenericPrinter {
         : printer(printerRawWriter) {}
     GenericPrinter() = default;
 
-    ~GenericPrinter() {
-        printer.flush();
-        printer.release();
-    }
+    virtual ~GenericPrinter();
 
     GenericPrinter(GenericPrinter &&) = default;
     GenericPrinter &operator=(GenericPrinter &&) = default;

@@ -29,6 +29,14 @@ class FilePrinter : public GenericPrinter {
         assign(stream);
     }
 
+    ~FilePrinter() override;
+
+    FilePrinter(FilePrinter &&) = default;
+    FilePrinter &operator=(FilePrinter &&) = default;
+
+    FilePrinter(const FilePrinter &) = delete;
+    FilePrinter &operator=(const FilePrinter &) = delete;
+
   protected:
     std::fstream stream;
 };
