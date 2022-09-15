@@ -25,7 +25,7 @@ endif()
 
 target_compile_options(EscPospp PUBLIC -Wall -Wpedantic -Wno-unused-member-function -std=c++17 -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-exit-time-destructors -Wno-global-constructors -Wno-constant-conversion)
 
-if (${USE_LIBUSB})
+if (${USE_LIBUSB} STREQUAL ON)
     target_compile_definitions(EscPospp PUBLIC -DUSE_LIBUSB="${USE_LIBUSB}")
     target_link_libraries(EscPospp usb-1.0)
 endif()
